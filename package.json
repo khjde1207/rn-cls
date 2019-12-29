@@ -1,0 +1,24 @@
+{
+  "name": "rn-cls",
+  "version": "0.1.1",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/khjde1207/rnclass.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/khjde1207/rnclass/issues"
+  },
+  "homepage": "https://github.com/khjde1207/rnclass#readme",
+  "dependencies": {
+    "lodash": "^4.17.15",
+    "react": "^16.12.0",
+    "react-native-responsive-screen": "^1.3.0"
+  }
+}
