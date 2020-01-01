@@ -9,9 +9,9 @@ const ClsComponent = (comp)=>{
     if(child){
         return React.Children.map(child , childcomp=>{
             if(React.isValidElement(childcomp)){
-                prop2styles(childcomp.props)
-                // {style:{fontSize: Number((childcomp.props.cls || "") + "0") } }
-                return React.cloneElement(childcomp, {}, ClsComponent(childcomp)) 
+                let cls = prop2styles(childcomp.props)
+                console.log(cls)
+                return React.cloneElement(childcomp, cls, ClsComponent(childcomp)) 
             }
             return  childcomp
         })
