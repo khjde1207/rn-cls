@@ -10,15 +10,16 @@ const ClsComponent = (comp)=>{
         return React.Children.map(child , childcomp=>{
             if(React.isValidElement(childcomp)){
                 let cls = prop2styles(childcomp.props)
-                console.log(cls)
-                return React.cloneElement(childcomp, cls, ClsComponent(childcomp)) 
+                let rtn = React.cloneElement(childcomp, cls , ClsComponent(childcomp)) 
+                return rtn;
             }
             return  childcomp
         })
     }
-    return React.cloneElement(comp) 
+    return React.cloneElement(comp, {style:{}}) 
 }
 
 export default (props)=>{
-    return  <ClsComponent {...props} ></ClsComponent>
+    // let comp = <ClsComponent {...props} ></ClsComponent>
+    return  <ClsComponent {...props} ></ClsComponent>;
 }
