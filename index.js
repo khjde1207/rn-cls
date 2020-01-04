@@ -5,12 +5,21 @@ import colorObj  from './lib/colorObj'
 
 const ClsComponent = (comp)=>{
     let child = _.get(comp , "children") || _.get(comp , "props.children");
+    
     if(child){ 
         return React.Children.map(child , childcomp=>{
             if(React.isValidElement(childcomp)){
                 let cls = prop2styles(childcomp.props)
                 let rtn = {};
                 let child_child = _.get(childcomp , "children") || _.get(childcomp , "props.children");
+                _.forEach(childcomp.props , (prop, key)=>{
+                    if(key === "children"){ return;}
+                    var bel  = React.isValidElement(prop) 
+                    if(bel){ 
+                        let clsch = prop2styles(prop.props)
+                        cls[key] = React.cloneElement(prop, clsch , ClsComponent(prop)) 
+                    }
+                });
                 if(child_child){
                     rtn = React.cloneElement(childcomp, cls , ClsComponent(childcomp)) 
                 }else{
@@ -21,7 +30,7 @@ const ClsComponent = (comp)=>{
             return  childcomp
         })
     } 
-
+    
     if(React.isValidElement(comp)){
         var cls = prop2styles(comp.props)
         return React.cloneElement(comp, cls)  
