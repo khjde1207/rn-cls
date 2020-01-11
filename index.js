@@ -2,6 +2,7 @@ import React ,{ComponentType} from 'react';
 import _ from 'lodash'
 import { prop2styles } from './lib/cls'
 import colorObj  from './lib/colorObj'
+import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 
 const ClsComponent = (comp)=>{
     let child = _.get(comp , "children") || _.get(comp , "props.children");
@@ -46,7 +47,9 @@ let setColor = (id , colorCode)=>{
 
 export {
     test,
-    setColor
+    setColor,
+    wp,
+    hp
 }
 
 export default (props)=>{
