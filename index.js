@@ -6,7 +6,7 @@ import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-nativ
 
 const ClsComponent = (comp)=>{
     let child = _.get(comp , "children") || _.get(comp , "props.children");
-    
+     
     if(child){ 
         return React.Children.map(child , childcomp=>{
             if(React.isValidElement(childcomp)){
@@ -40,7 +40,7 @@ const ClsComponent = (comp)=>{
 }
 let test =prop2styles; 
 let setColor = (id , colorCode)=>{
-    // console.log(colorObj)
+    // console.log(colorObj) 
     colorObj[id] = colorCode; 
     return true;
 }
