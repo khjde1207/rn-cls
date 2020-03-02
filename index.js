@@ -18,6 +18,11 @@ const ClsComponent = comp => {
         let child_child =
           _.get(childcomp, 'children') || _.get(childcomp, 'props.children');
 
+        let target = runPatternCls(childcomp);
+        if (target) {
+          cls = _.merge(target, cls);
+        }
+
         _.forEach(childcomp.props, (prop, key) => {
           if (key === 'children') {
             return;
@@ -60,7 +65,37 @@ let clsGet = text => {
   return rtn;
 };
 
-export {test, setColor, wp, hp, clsGet};
+let patternCls = [];
+const addPatternCls = (obj: Object) => {
+  patternCls.push(obj);
+};
+const setPatternCls = (arr: Array) => {
+  patternCls = arr;
+};
+const getPatternCls = () => {
+  return patternCls;
+};
+const runPatternCls = comp => {
+  let rtn = _.map(patternCls, (v, idx) => {
+    let tmp = _.get(comp, v.target);
+    if (tmp && v.filter(tmp)) {
+      return prop2styles(v.value);
+    }
+    return null;
+  });
+  return _.merge(..._.filter(rtn, null));
+};
+
+export {
+  test,
+  setColor,
+  wp,
+  hp,
+  clsGet,
+  getPatternCls,
+  setPatternCls,
+  addPatternCls,
+};
 
 export default props => {
   let comp = <ClsComponent {...props} />;
