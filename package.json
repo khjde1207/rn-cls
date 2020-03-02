@@ -1,6 +1,6 @@
 {
   "name": "rn-cls",
-  "version": "0.1.21",
+  "version": "0.1.22",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -24,7 +24,7 @@
   "devDependencies": {
     "eslint": "^6.8.0",
     "@babel/core": "^7.6.2",
-    "@babel/runtime": "^7.6.2", 
+    "@babel/runtime": "^7.6.2",
     "@react-native-community/eslint-config": "^0.0.5"
   }
 }
