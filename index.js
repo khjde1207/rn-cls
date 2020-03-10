@@ -30,6 +30,12 @@ const ClsComponent = comp => {
           var bel = React.isValidElement(prop);
           if (bel) {
             let clsch = prop2styles(prop.props);
+            let clschTarget = runPatternCls(prop);
+
+            if (clschTarget) {
+              clsch = _.merge(clschTarget, clsch);
+            }
+
             cls[key] = React.cloneElement(prop, clsch, ClsComponent(prop));
           }
         });
