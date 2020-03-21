@@ -72,10 +72,10 @@ let clsGet = text => {
 };
 
 let patternCls = [];
-const addPatternCls = (obj: Object) => {
+const addPatternCls = (obj) => {
   patternCls.push(obj);
 };
-const setPatternCls = (arr: Array) => {
+const setPatternCls = (arr) => {
   patternCls = arr;
 };
 const getPatternCls = () => {
@@ -108,3 +108,4 @@ export default props => {
   // console.log(" >>>>: " , comp)
   return comp;
 };
+ 
