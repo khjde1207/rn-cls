@@ -11,7 +11,7 @@ const ClsComponent = comp => {
   let child = _.get(comp, 'children') || _.get(comp, 'props.children');
 
   if (child) {
-    return React.Children.map(child, childcomp => {
+    let rtnMap =  React.Children.map(child, childcomp => {
       if (React.isValidElement(childcomp)) {
         let cls = prop2styles(childcomp.props);
         let rtn = {};
@@ -48,6 +48,7 @@ const ClsComponent = comp => {
       }
       return childcomp;
     });
+    return React.Children.count(rtnMap) === 1 ? rtnMap[0] : rtnMap;
   }
 
   if (React.isValidElement(comp)) {
