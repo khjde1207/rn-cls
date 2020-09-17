@@ -86,7 +86,7 @@ const runPatternCls = comp => {
   let rtn = _.map(patternCls, (v, idx) => {
     let tmp = _.get(comp, v.target, undefined);
     if (tmp !== undefined && v.filter(tmp)) {
-      return prop2styles(v.value);
+      return {...prop2styles(v.value), ...v.props};
     }
     return null;
   });
