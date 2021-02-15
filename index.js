@@ -11,7 +11,7 @@ const ClsComponent = comp => {
   let child = _.get(comp, 'children') || _.get(comp, 'props.children');
 
   if (child) {
-    let rtnMap =  React.Children.map(child, childcomp => {
+    let rtnMap = React.Children.map(child, childcomp => {
       if (React.isValidElement(childcomp)) {
         let cls = prop2styles(childcomp.props);
         let rtn = {};
@@ -73,10 +73,10 @@ let clsGet = text => {
 };
 
 let patternCls = [];
-const addPatternCls = (obj) => {
+const addPatternCls = obj => {
   patternCls.push(obj);
 };
-const setPatternCls = (arr) => {
+const setPatternCls = arr => {
   patternCls = arr;
 };
 const getPatternCls = () => {
@@ -92,6 +92,10 @@ const runPatternCls = comp => {
   });
   return _.merge(..._.filter(rtn, null));
 };
+const Cls = props => {
+  let comp = <ClsComponent {...props} />;
+  return comp;
+};
 
 export {
   test,
@@ -102,11 +106,7 @@ export {
   getPatternCls,
   setPatternCls,
   addPatternCls,
+  Cls,
 };
 
-export default props => {
-  let comp = <ClsComponent {...props} />;
-  // console.log(" >>>>: " , comp)
-  return comp;
-};
- 
+export default Cls;
